@@ -2,7 +2,7 @@
 #define VECTOR_H
 #include <initializer_list>
 using namespace std;
-templete <typename T>
+template <typename T>
 class vector{
 
 	T *vet=nullptr;
@@ -23,15 +23,13 @@ class vector{
 	T& operator[](int); //ritorno reference così viene ritornato un riferimento alla cella del vettore che però viene dereferenziato automaticamente 
 	//e mi permette di usare il valore come left value e modificare la cella
 	vector(std::initializer_list<T>);
-	vector(const vector&);
-	vector& operator=(const vector&);
-	vector(vector&&); //costruttore di spostamento, viene chiamato quando ritorno un oggetto da una funzione che anzichè copiare quell'oggetto e ritornarlo crea un nuovo oggetto che punta 
+	vector(const vector<T>&);
+	vector& operator=(const vector<T>&);
+	vector(vector<T>&&); //costruttore di spostamento, viene chiamato quando ritorno un oggetto da una funzione che anzichè copiare quell'oggetto e ritornarlo crea un nuovo oggetto che punta 
 			//direttamente ai dati di quello vecchio
-	vector& operator=(vector&&); //assegnamento di spostamento, viene chiamato quando dopo il ritorno di una funzione devo assegnare il ritorno ad un oggetto
+	vector<T>& operator=(vector<T>&&); //assegnamento di spostamento, viene chiamato quando dopo il ritorno di una funzione devo assegnare il ritorno ad un oggetto
 
 };
 
-
+#include "VECTOR_HPP.hpp"
 #endif
-
-//prova
