@@ -1,30 +1,25 @@
-#ifndef VECTOR_HPP
-#define VECTOR_HPP
+#include "../include/VECTOR_H.h"
 #include <initializer_list>
 #include <algorithm>
 #include <iostream>
-#include "VECTOR_H.h"
 using namespace std;
 
-template <typename T>
-vector<T>::vector(){
-	vet=new T[10];
+vector::vector(){
+	vet=new double[10];
 	vSize=0;
 	maxSize=10;
 	for(int i=0; i<maxSize; i++){
 		vet[i]=0;
 	}
 }
-template <typename T>
-vector<T>::vector(const vector<T>& v) //costruttore di copia
+vector::vector(const vector& v) //costruttore di copia
 {
 	vSize=v.size();
-	vet=new T[vSize];
+	vet=new double[vSize];
 	copy(v.vet, v.vet+vSize, vet);
 }
-template <typename T>
-vector<T>& vector<T>::operator=(const vector<T>& v){
-	T *n=new T(v.size());
+vector& vector::operator=(const vector& v){
+	double *n=new double(v.size());
 	
 	copy(v.vet, v.vet+v.vSize, n);
 	delete[] vet;
@@ -33,15 +28,13 @@ vector<T>& vector<T>::operator=(const vector<T>& v){
 	return *this;
 }
 
-template <typename T>
-vector<T>::vector(vector<T>&& v): vSize{v.size()}, vet{v.vet}
+vector::vector(vector&& v): vSize{v.size()}, vet{v.vet}
 {
 	v.vSize=0;  //invalido il vecchio oggetto
 	v.vet=nullptr;
 }
 
-template <typename T>
-vector<T>& vector<T>::operator=(vector<T>&& v) 
+vector& vector::operator=(vector&& v) 
 {
 	delete[] vet;
 	vet=v.vet;
@@ -52,21 +45,18 @@ vector<T>& vector<T>::operator=(vector<T>&& v)
 
 }
 
-template <typename T>
-vector<T>::vector(std::initializer_list<T> lst): vSize{static_cast<int>(lst.size())}, vet{new T[lst.size()]} //faccio un cast sulla lunghezza dell'initializer list perchèè di tipo
-											//long unsigned int e lo voglio assegnare ad un intero, è accettabile fare il cast in questo caso
+vector::vector(std::initializer_list<double> lst): vSize{lst.size()}, vet{new double[lst.size()]}
 {
 	copy(lst.begin(), lst.end(), vet);
 }
 
-template <typename T>
-void vector<T>::push_back(T d){
+void vector::push_back(double d){
 	if(vSize<maxSize){
 		vet[vSize]=d;
 		vSize++;
 	}
 	else{
-		T* tmp=vet; //puntatore temporaneo per permettere poi di svuotare la memoria usata dal vecchio vet
+		double* tmp=vet; //puntatore temporaneo per permettere poi di svuotare la memoria usata dal vecchio vet
 		vet=resize(vSize*2);
 		delete[] tmp;
 		vet[vSize]=d;
@@ -74,19 +64,15 @@ void vector<T>::push_back(T d){
 		
 	}
 }
-
-template <typename T>
-T* vector<T>::resize(int dim){
-	T *tmp=new T[dim];
+double* vector::resize(int dim){
+	double*tmp=new double[dim];
 	for(int i=0; i<vSize; i++){
 		tmp[i]=vet[i];
 	}
 	maxSize*=2;
 	return tmp;
 }
-
-template <typename T>
-T vector<T>::at(int i){
+double vector::at(int i){
 	if(i<vSize){
 		return vet[i];
 	}
@@ -94,22 +80,21 @@ T vector<T>::at(int i){
 		throw vector::outOfBound();
 	}
 }
-template <typename T>
-T vector<T>::pop_front(){
+double vector::pop_front(){
 	/*double* tmp=vet;
 	vet=&vet[1];
 	double ret=*tmp;
 	delete tmp;
 	return ret;*/ 	//non fare così, se avanzo il puntatore al blocco di memoria allocato poi non posso più deallocarlo correttamente perchè non punta più al primo indirizzo
 	if(vSize>0){
-		T* tmp=vet;
-		vet=new T[maxSize-1];
+		double* tmp=vet;
+		vet=new double[maxSize-1];
 		maxSize--;
 		for(int i=0; i<vSize-1; i++){
 			vet[i]=tmp[i+1];
 		}
 		vSize--;
-		T ret=*tmp;
+		double ret=*tmp;
 		delete[] tmp;
 		return ret;
 	}
@@ -120,22 +105,18 @@ T vector<T>::pop_front(){
 	
 	
 }
-template <typename T>
-void vector<T>::reserve(int n){
-	T* tmp=vet;
+void vector::reserve(int n){
+	double* tmp=vet;
 	vet=resize(n);
 	delete[] tmp;
 }
-template <typename T>
-vector<T>::~vector(){
+vector::~vector(){
 	delete[] vet;
 }
-template <typename T>
-int vector<T>::size() const{
+int vector::size() const{
 	return vSize;
 }
-template <typename T>
-T& vector<T>::operator[](int i){
+double& vector::operator[](int i){
 	if(i<vSize){
 		return vet[i]; //il dato ritornato punterà a vet[i]
 	}
@@ -146,7 +127,7 @@ T& vector<T>::operator[](int i){
 
 
 
-#endif
+
 
 /*vector(const double[]){
 	for(int i=0; i
