@@ -16,6 +16,7 @@ class vector{
 	class vectorOutOfBounds{};
 	class emptyQueueException{};
 	vector();
+	vector(int); //costruttore che accetta un parametro che indica la dimensione del vector da creare
 	//vector(const double[]);
 	~vector();
 	void push_back(T);

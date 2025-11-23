@@ -7,7 +7,7 @@
 using namespace std;
 
 template <typename T>
-vector<T>::vector(){
+vector<T>::vector(){ //di default crea un vector di dimensione 10
 	vet=new T[10];
 	vSize=0;
 	maxSize=10;
@@ -17,6 +17,19 @@ vector<T>::vector(){
 		vet[i]=T{}; //in questo modo chiama il costruttore di default per qualsiasi tipo di T venga usato
 	}
 }
+
+template <typename T>
+vector<T>::vector(int n){
+	vet=new T[n];
+	vSize=0;
+	maxSize=n;
+	front=0;
+	back=0;
+	for(int i=0; i<maxSize; i++){
+		vet[i]=T{};
+	}
+}
+
 template <typename T>
 vector<T>::vector(const vector<T>& v) //costruttore di copia
 {
