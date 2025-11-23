@@ -8,10 +8,13 @@ class vector{
 	T *vet=nullptr;
 	int vSize;
 	int maxSize;
-	T* resize(int dim);
+	int front;
+	int back;
+	T* resize(int);
 	
 	public:
-	class outOfBound{};
+	class vectorOutOfBounds{};
+	class emptyQueueException{};
 	vector();
 	//vector(const double[]);
 	~vector();
@@ -23,12 +26,15 @@ class vector{
 	T& operator[](int); //ritorno reference così viene ritornato un riferimento alla cella del vettore che però viene dereferenziato automaticamente 
 	//e mi permette di usare il valore come left value e modificare la cella
 	vector(std::initializer_list<T>);
-	vector(const vector<T>&);
-	vector& operator=(const vector<T>&);
+	vector(const vector<T>&); //costruttore di copia
+	vector& operator=(const vector<T>&); //assegnamento di copia
 	vector(vector<T>&&); //costruttore di spostamento, viene chiamato quando ritorno un oggetto da una funzione che anzichè copiare quell'oggetto e ritornarlo crea un nuovo oggetto che punta 
 			//direttamente ai dati di quello vecchio
 	vector<T>& operator=(vector<T>&&); //assegnamento di spostamento, viene chiamato quando dopo il ritorno di una funzione devo assegnare il ritorno ad un oggetto
-
+	int increment(int); //per l'incremento degli indici front e back della coda
+	bool isEmpty();
+	T getFront();
+	T getBack();
 };
 
 #include "VECTOR_HPP.hpp"
