@@ -12,4 +12,6 @@ struct array {
     int size() const { return N; }
 };
 
+#include "ARRAY_HPP.hpp"
+
 #endif
