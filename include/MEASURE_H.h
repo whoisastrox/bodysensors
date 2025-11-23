@@ -9,15 +9,14 @@ class Measure {
 
     static const int MEASURE_SIZE = 17;
 
-    array<reading, MEASURE_SIZE> m;
-
+    reading m[MEASURE_SIZE];
 
     public:
         class fixedArrayOutOfBound{};
-        Measure(array<reading, MEASURE_SIZE> rs);
+        Measure(reading[MEASURE_SIZE]);
         Measure();
 
-        array<reading, MEASURE_SIZE> toArray(){}
+        reading* toArray();
 
         reading& operator[](int i);
     
