@@ -1,5 +1,5 @@
-#ifndef INERTIALDRIVER_H
-#define INERTIALDRIVER_H
+#ifndef MEASURE_H
+#define MEASURE_H
 
 #include "READING_H.h"
 #include "ARRAY_H.h"
