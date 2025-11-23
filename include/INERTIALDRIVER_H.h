@@ -17,15 +17,17 @@ class inertialDriver{
         class emptyBuffer{};
         class invalidIndex {};
 
-        inertialDriver(int dim=8);
+        inertialDriver(int dim=50);
 
         void push_back(const Measure& m);
         Measure pop_front();
         void clear_buffer();
-        const reading& get_reading(int index) const;
+        reading& get_reading(const int index);
         int size() const { return buffer.size(); }
-        bool empty() const { return buffer.size() == 0; }
+        bool isEmpty() const { return buffer.size() == 0; }
 };
+
+ostream& operator<<(ostream& out, const inertialDriver& driver);
 
 #endif
 
