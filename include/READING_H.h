@@ -1,5 +1,10 @@
+using namespace std;
+
 #ifndef READING_H
 #define READING_H
+
+#include <string>
+
 
 struct reading {
     double yaw_v;
@@ -8,6 +13,7 @@ struct reading {
     double pitch_a;
     double roll_v;
     double roll_a;
+    string print(const string);
 };
 
 #endif
