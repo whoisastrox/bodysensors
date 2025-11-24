@@ -7,7 +7,6 @@ inertialDriver::inertialDriver(int dim) : maxSize(dim), buffer{vector<Measure>(d
 
 //Inserisce nuova misura nel buffer
 void inertialDriver::push_back(const Measure& m){ 
-    if(buffer.size()==maxSize){ buffer.pop_front(); }
     buffer.push_back(m);
 }
 
@@ -19,7 +18,10 @@ Measure inertialDriver::pop_front(){
 
 //Elimina tutte le misure presenti nel buffer
 void inertialDriver::clear_buffer(){
-    while(buffer.size()>0){ buffer.pop_front(); }
+    while(buffer.size()>0){ 
+    	buffer.pop_front();
+    	cout<<"delete tramite clear_buffer"<<endl;	
+    }
 }
 
 //Ritorna lettura della misura più recente

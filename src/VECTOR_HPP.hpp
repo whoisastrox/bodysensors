@@ -110,14 +110,15 @@ T vector<T>::at(int i){
 }
 template <typename T>
 T vector<T>::pop_front(){
+	std::cout<<"front: "<<front<<" back: "<<back<<"\n";
 	T ret=T{};
-	if(!isEmpty()){
+	if(vSize>0){
 		ret=vet[front];
 		vet[front]=T{};
 		front=increment(front);
 	}
 	else{
-		throw vector::vectorOutOfBounds();
+		throw vector::emptyQueueException();
 	}
 	vSize--;
 	return ret;

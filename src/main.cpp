@@ -22,7 +22,7 @@ int main(int argc, char* argv[]){
 	r[15]=reading{1,2,3,4,5,6};
 	r[16]=reading{1,2,3,4,5,6};
 	Measure m=Measure{r};
-	inertialDriver i=inertialDriver{50};
+	inertialDriver i=inertialDriver{10};
 	//std::cout<<r[0].print(";");
 	//std::cout<<m.print(";");
 	i.push_back(m);
@@ -63,7 +63,7 @@ int main(int argc, char* argv[]){
 	
 	std::cout<<i;
 	
-	std::cout<<"Misura dimensione buffer: "<<i.size();
+	std::cout<<"Misura dimensione buffer: "<<i.size()<<endl;
 	
 	//riempio nuovamente il buffer
 	i.push_back(r);
@@ -73,7 +73,7 @@ int main(int argc, char* argv[]){
 	std::cout<<"Misura dimensione buffer dopo la pulizia: "<<i.size()<<std::endl;
 	
 	//provo a riempire il buffer completamente
-	for(int k=0; k<70; k++){
+	for(int k=0; k<15; k++){
 		reading rk[17];
 		for(int j=0; j<17; j++){
 			rk[j]=reading{static_cast<double>(k),static_cast<double>(k),static_cast<double>(k),static_cast<double>(k),static_cast<double>(k),static_cast<double>(k)};
@@ -82,12 +82,12 @@ int main(int argc, char* argv[]){
 	}
 	
 	std::cout<<"Misura dimensione buffer post riempimento: "<<i.size()<<std::endl;
-	for(int k=0; k<50; k++){
-		std::cout<<k<<": "<<i.size();
+	for(int k=0; k<10; k++){
+		std::cout<<k<<": ";
 		i.pop_front();
 		
 	}
-	std::cout<<"Misura dimensione buffer dopo la pulizia: "<<i.size()<<std::endl;
+	std::cout<<"Misura dimensione buffer dopo la pulizia con pop: "<<i.size()<<std::endl;
 	
 	
 	
