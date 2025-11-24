@@ -19,15 +19,15 @@ class inertialDriver{
 
         inertialDriver(int dim=50);
 
-        void push_back(const Measure& m); //memorizza misura nel buffer(sovrascrive la meno recente se è pieno)
-        Measure pop_front(); //ritorna misura più vecchia e la rimuove
-        void clear_buffer(); //elimina tutte le misure
-        reading& get_reading(const int index); //ritorna la lettura della misura più recente corrispondente al numero passato
-        int size() const { return buffer.size(); } //ritorna numero di misure presenti nel buffer
-        bool isEmpty() const { return buffer.size() == 0; } //trona true se il buffer è vuoto
+        void push_back(const Measure& m); //Memorizza misura nel buffer(sovrascrive la meno recente se è pieno)
+        Measure pop_front(); //Ritorna misura più vecchia e la rimuove
+        void clear_buffer(); //Elimina tutte le misure
+        reading& get_reading(const int index); //Ritorna la lettura della misura più recente corrispondente al numero passato
+        int size() const { return buffer.size(); } //Ritorna numero di misure presenti nel buffer
+        bool isEmpty() const { return buffer.size() == 0; } //Torna true se il buffer è vuoto
 };
 
-ostream& operator<<(ostream& out, const inertialDriver& driver); //overloading dell'operatore << per stampare ultima misura presente nel buffer
+ostream& operator<<(ostream& out, const inertialDriver& driver); //Overloading dell'operatore << per stampare ultima misura presente nel buffer
 
 #endif
 
