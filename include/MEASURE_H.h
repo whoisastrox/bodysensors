@@ -25,7 +25,7 @@ class Measure {
         Measure(Measure&&); // move constructor
         Measure& operator=(Measure&&);
 
-        string print(const string sep);
+        string print(const string sep) const;
     
 };
 

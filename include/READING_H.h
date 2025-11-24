@@ -13,7 +13,7 @@ struct reading {
     double pitch_a;
     double roll_v;
     double roll_a;
-    string print(const string);
+    string print(const string)const;
 };
 
 #endif

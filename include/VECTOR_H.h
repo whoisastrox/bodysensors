@@ -33,9 +33,9 @@ class vector{
 			//direttamente ai dati di quello vecchio
 	vector<T>& operator=(vector<T>&&); //assegnamento di spostamento, viene chiamato quando dopo il ritorno di una funzione devo assegnare il ritorno ad un oggetto
 	int increment(int); //per l'incremento degli indici front e back della coda
-	bool isEmpty();
-	T getFront();
-	T getBack();
+	bool isEmpty() const;
+	T getFront() const;
+	T getBack() const;
 };
 
 #include "../src/VECTOR_HPP.hpp"
