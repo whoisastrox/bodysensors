@@ -3,7 +3,7 @@
 #include <iostream>
 
 //Imposta dimensione massima del buffer
-inertialDriver::inertialDriver(int dim) : maxSize(dim) {} 
+inertialDriver::inertialDriver(int dim) : maxSize(dim), buffer{vector<Measure>(dim)}{}
 
 //Inserisce nuova misura nel buffer
 void inertialDriver::push_back(const Measure& m){ 
@@ -23,20 +23,22 @@ void inertialDriver::clear_buffer(){
 }
 
 //Ritorna lettura della misura più recente
-reading& inertialDriver::get_reading(const int index){
+reading& inertialDriver::get_reading(const int index) const{
     if(buffer.size()==0){throw emptyBuffer(); }
     if(index<0||index>=17){ throw invalidIndex(); }
     return buffer.getBack()[index];
 }
 
 //Stampa ultima misura presente del buffer
-ostream& operator<<(ostream& out, inertialDriver& driver){
+ostream& operator<<(ostream& out,const inertialDriver& driver){
     if(driver.isEmpty()){ return out << "Empty Buffer\n";}
 
     string s = "";
     for(int i = 0; i<17; i++){
-        s += ((driver.get_reading(17).print("; ")) + "; ");
+        s += ((driver.get_reading(i).print("; ")) + "\n");
     }
     return out << s;
 }
+int inertialDriver::size() const { return buffer.size(); }
+bool inertialDriver::isEmpty() const { return buffer.size() == 0; }
 

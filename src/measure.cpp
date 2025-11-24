@@ -42,7 +42,7 @@ Measure& Measure::operator=(Measure&& measure){
     return *this;
 }
 
-string Measure::print(const string sep){
+string Measure::print(const string sep) const{
     string s = "";
     for(int i = 0; i<MEASURE_SIZE-1; i++){
         s += ((m[MEASURE_SIZE-1].print("; ")) + sep);

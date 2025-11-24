@@ -90,10 +90,10 @@ int vector<T>::increment(int index){
 template <typename T>
 void vector<T>::push_back(T d){
 	vet[back]=d;
-	back=increment(back);
-	if(back==front){
+	if(increment(back)==front){
 		front=increment(front);
 	}
+	back=increment(back);
 	if(vSize<maxSize)
 		vSize++;
 }
@@ -119,15 +119,14 @@ T vector<T>::pop_front(){
 	else{
 		throw vector::vectorOutOfBounds();
 	}
-	if(vSize<maxSize)
-		vSize--;
+	vSize--;
 	return ret;
 	
 	
 }
 
 template <typename T>
-bool vector<T>::isEmpty(){
+bool vector<T>::isEmpty() const{
 	return front==back;
 }
 
@@ -166,7 +165,7 @@ T& vector<T>::operator[](int i){
 }
 
 template <typename T>
-T vector<T>::getFront(){
+T vector<T>::getFront()const{
 	if(!isEmpty()){
 		return vet[front];
 	}
@@ -176,9 +175,9 @@ T vector<T>::getFront(){
 }
 
 template <typename T>
-T vector<T>::getBack(){
+T vector<T>::getBack() const{
 	if(!isEmpty()){
-		return vet[back];
+		return vet[back-1];
 	}
 	else{
 		throw vector::emptyQueueException();

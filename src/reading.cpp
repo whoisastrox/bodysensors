@@ -2,7 +2,7 @@
 
 using namespace std;
 
-string reading::print(const string sep){
+string reading::print(const string sep) const{
     string s = "";
     return s 
             + to_string(yaw_v)
