@@ -19,7 +19,7 @@ vector<T>::vector(){ //di default crea un vector di dimensione 10
 }
 
 template <typename T>
-vector<T>::vector(int n){
+explicit vector<T>::vector(int n){ //costruttore che definisce la dimensione del vector, explicit per disabilitare la conversione implicita
 	vet=new T[n];
 	vSize=0;
 	maxSize=n;
