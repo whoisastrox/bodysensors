@@ -10,7 +10,7 @@ Measure::Measure(const Measure& measure): m{new reading[MEASURE_SIZE]} {
 };
 //costruttore di default
 Measure::Measure(): m{new reading[MEASURE_SIZE]} {
-    std::fill(m, m+MEASURE_SIZE, 0);
+    std::fill(m, m+MEASURE_SIZE, (reading){0,0,0,0,0,0});
 };
 
 reading& Measure::operator[](int n){
