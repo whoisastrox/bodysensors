@@ -1,60 +1,35 @@
-#include <iostream>
-#include "../include/VECTOR_H.h"
-using namespace std;
-vector prova();
-int main(){
-	vector v{};
-	for(int i=0; i<15; i++){
-		v.push_back(i);
-	}
-	std::cout<<v[10];
-	std::cout<<std::endl;
-	v[10]=-1;
-	std::cout<<v[10];
-	std::cout<<std::endl;
-	for(int i=0; i<15; i++){
-		std::cout<<v.at(i)<<" ";
-		
-	}
-	std::cout<<std::endl;
-	for(int i=0; i<15; i++){
-		std::cout<<v.pop_front()<<" ";
-		
-	}
-	std::cout<<std::endl;
-	std::cout<<v.size();
-	cout<<endl;
-	cout<<"----------------------------------------------"<<endl;
-	vector v1{5,2.0,3.1};
-	vector v2{3.1,3.1,3.1};
-	for(int i=0; i<3; i++){
-		std::cout<<v1.at(i)<<" ";
-		
-	}
-	cout<<endl;
-	cout<<"valore iniziale di v2[1] "<<v2[1]<<endl;
+#include "../include/INERTIALDRIVER_H.h"
+#include "../include/MEASURE_H.h"
+#include "../include/READING_H.h"
+int main(int argc, char* argv[]){
 	
-	v1=v2;  //ok, qui viene chiamato il costruttore di copia.
-	v1[1]=0;
-	cout<<"valore finale di v2[1] "<<v2[1]<<" invariato?"<<endl;
-	for(int i=0; i<3; i++){
-		std::cout<<v1.at(i)<<" ";
-		
-	}
-	cout<<"dopo chiamata a funzione"<<endl;
-	v1=prova(); //ok
-	for(int i=0; i<3; i++){
-		std::cout<<v1.at(i)<<" ";
-	}
-	return 0;
-}
+	reading r[17];
+	r[0]=reading{1,2,3,4,5,6};
+	r[1]=reading{1,2,3,4,5,6};
+	r[2]=reading{1,2,3,4,5,6};
+	r[3]=reading{1,2,3,4,5,6};
+	r[4]=reading{1,2,3,4,5,6};
+	r[5]=reading{1,2,3,4,5,6};
+	r[6]=reading{1,2,3,4,5,6};
+	r[7]=reading{1,2,3,4,5,6};
+	r[8]=reading{1,2,3,4,5,6};
+	r[9]=reading{1,2,3,4,5,6};
+	r[10]=reading{1,2,3,4,5,6};
+	r[12]=reading{1,2,3,4,5,6};
+	r[13]=reading{1,2,3,4,5,6};
+	r[14]=reading{1,2,3,4,5,6};
+	r[15]=reading{1,2,3,4,5,6};
+	r[16]=reading{1,2,3,4,5,6};
+	r[17]=reading{1,2,3,4,5,6};
+	Measure m=Measure{r};
+	inertialDriver i=inertialDriver{50};
+	
+	i.push_back(m);
+	
+	std::cout<<i;
+	
+	
+	
 
-vector prova(){
-	vector v2{3.1,3.1,3.1};
-	return v2;
-}
-
-
-
-
-
+	
+	return 0;}
