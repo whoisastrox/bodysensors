@@ -38,5 +38,5 @@ class vector{
 	T getBack();
 };
 
-#include "VECTOR_HPP.hpp"
+#include "../src/VECTOR_HPP.hpp"
 #endif
