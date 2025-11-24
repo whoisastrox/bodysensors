@@ -17,7 +17,7 @@ class inertialDriver{
         class emptyBuffer{};
         class invalidIndex {};
 
-        inertialDriver(int dim=50);
+        inertialDriver(int dim);
 
         void push_back(const Measure& m); //Memorizza misura nel buffer(sovrascrive la meno recente se è pieno)
         Measure pop_front(); //Ritorna misura più vecchia e la rimuove
