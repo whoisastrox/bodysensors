@@ -94,7 +94,8 @@ void vector<T>::push_back(T d){
 		front=increment(front);
 	}
 	back=increment(back);
-	if(vSize<maxSize)
+	if(vSize<maxSize)  //questo if serve nel caso in cui al vector vengano aggiunti più elementi rispetto alla sua capienza massima, in questo caso la coda è circolare, quindi vengono eliminatiù
+			    //vecchi elementi per fare spazio a quelli nuovi, quindi il numero di elementi contenuti non potrà mai superare maxSize, perciò aumenta solo in caso sia minore di maxSize
 		vSize++;
 }
 
@@ -131,7 +132,7 @@ bool vector<T>::isEmpty() const{
 	return front==back;
 }
 
-template <typename T>
+/*template <typename T>			//i due metodi resize e reserve non vengono più utilizzati perchè in questo caso la specifica dice che la dimensione del buffer è definita e fissa
 T* vector<T>::resize(int dim){
 	T *tmp=new T[dim];
 	for(int i=0; i<vSize; i++){
@@ -146,7 +147,7 @@ void vector<T>::reserve(int n){
 	T* tmp=vet;
 	vet=resize(n);
 	delete[] tmp;
-}
+}*/
 template <typename T>
 vector<T>::~vector(){
 	delete[] vet;
@@ -165,7 +166,7 @@ T& vector<T>::operator[](int i){
 	}
 }
 
-template <typename T>
+template <typename T>	//ritorna il più vecchio elemento inserito senza eliminarlo
 T vector<T>::getFront()const{
 	if(!isEmpty()){
 		return vet[front];
@@ -175,7 +176,7 @@ T vector<T>::getFront()const{
 	}
 }
 
-template <typename T>
+template <typename T>	//ritorna l'elemento inserito più di recente
 T vector<T>::getBack() const{
 	if(!isEmpty()){
 		return vet[back-1];
